@@ -1,0 +1,58 @@
+CREATE TABLE Categorias (
+    ID INT PRIMARY KEY,
+    Nome VARCHAR(255)
+);
+
+CREATE TABLE Personagens (
+    ID INT PRIMARY KEY,
+    Nome VARCHAR(255),
+    Categoria INT,
+    FOREIGN KEY (Categoria) REFERENCES Categorias(ID)
+);
+
+CREATE TABLE Jogos (
+    ID INT PRIMARY KEY,
+    Nome VARCHAR(255)
+);
+
+CREATE TABLE Personagens_Jogos (
+    PersonagemID INT,
+    JogoID INT,
+    FOREIGN KEY (PersonagemID) REFERENCES Personagens(ID),
+    FOREIGN KEY (JogoID) REFERENCES Jogos(ID)
+);
+
+INSERT INTO Categorias (ID, Nome)
+VALUES
+(1, 'Lutador'),
+(2, 'Deus/Entidade'),
+(3, 'Edeniano'),
+(4, 'Shokan'),
+(5, 'Tarkatan'),
+(6, 'Wraith'),
+(7, 'Netherrealmiano'),
+(8, 'Ciborgue'),
+(9, 'Zaterran'),
+(10, 'Chaosrealmer'),
+(11, 'Kytinn'),
+(12, 'Osh-Tekk'),
+(13, 'Alienígena'),
+(14, 'Outro');
+
+INSERT INTO Personagens (ID, Nome, Categoria)
+VALUES
+(1, 'Liu Kang', 1),
+(2, 'Johnny Cage', 1),
+(3, 'Sonya Blade', 1);
+
+INSERT INTO Jogos (ID, Nome)
+VALUES 
+(1, 'Mortal Kombat'),
+(2, 'Mortal Kombat II');
+
+INSERT INTO Personagens_Jogos (PersonagemID, JogoID)
+VALUES
+    (1, 1), 
+    (1, 2),
+    (2, 1),
+    (2, 2);
